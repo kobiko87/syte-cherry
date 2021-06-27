@@ -53,6 +53,7 @@ kubectl proxy
 ```
 
 ## Accessing the Dashboard
+In seperate terminal run
 ```
 kubectl apply -f https://raw.githubusercontent.com/hashicorp/learn-terraform-provision-eks-cluster/master/kubernetes-dashboard-admin.rbac.yaml
 kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep service-controller-token | awk '{print $1}')
@@ -60,4 +61,7 @@ kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | gre
 Now copy and past token from last step into the UI, UI can be accessed at [this link](http://127.0.0.1:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/)
 
 ## Deploy app to Kubernetes
-
+```
+cd <REPOSITORY_ROOT>
+kubectl apply -f k8s
+```
