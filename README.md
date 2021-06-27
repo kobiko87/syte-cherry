@@ -56,16 +56,18 @@ kubectl port-forward service/app 5000
 Then you can access the application on `localhost:5000`
 
 ## App Functionality
-To get the server IP running the service and echo string back
+1. To get the server IP running the service and echo string back  
+Access the link **`http://localhost:5000?my_string=MY_STRING`** in a browser, or use CURL command
 ```
-curl http://localhost:5000?my_string=MY_STRING
-Or
+    curl http://localhost:5000?my_string=MY_STRING
 ```
-To get `index.html` from `html` directory:
+
+2. To get `index.html` from `html` directory:  
+Access the link **`http://localhost:5000/html/index.html`** in a browser, or use CURL command
 ```
-curl http://<SERVER_IP>:5000/html/index.html
+    curl http://localhost:5000/html/index.html
 ```
-NOTE: any file added to html directory can be accessed using the filename like so:
+NOTE: any file added to `html` directory in the code can be accessed using the filename like so:
 ```
-curl http://<SERVER_IP>:5000/html/my-file.html
+    curl http://localhost:5000/html/<MY_FILE>
 ```
