@@ -12,10 +12,11 @@ docker build -t cherry-syte .
 docker run -p 5000:5000 cherry-syte
 ```
 
-## App responses
-To get the server IP and echoed string
+## App Functionality
+To get the server IP running the service and echo string back
 ```
 curl http://localhost:5000?my_string=MY_STRING
+Or
 ```
 To get `index.html` from `html` directory:
 ```
@@ -64,4 +65,6 @@ Now copy and past token from last step into the UI, UI can be accessed at [this 
 ```
 cd <REPOSITORY_ROOT>
 kubectl apply -f k8s
+kubectl port-forward service/app 5000
 ```
+Then you can access the application on `localhost:5000`
