@@ -1,13 +1,3 @@
-
-# Retrieve EKS cluster information
-provider "aws" {
-  region = data.terraform_remote_state.eks.outputs.region
-}
-
-data "aws_eks_cluster" "cluster" {
-  name = data.terraform_remote_state.eks.outputs.cluster_id
-}
-
 provider "kubernetes" {
   host                   = data.aws_eks_cluster.cluster.endpoint
   token                  = data.aws_eks_cluster_auth.cluster.token
