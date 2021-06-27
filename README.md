@@ -1,5 +1,5 @@
 # Cherry Syte
-Sweet little exercise in bundling up Docker based apps.
+Sweet little exercise in bundling up Docker based apps 🍒🍒.
 
 ## Building the App image
 ```
