@@ -12,30 +12,15 @@ docker build -t cherry-syte .
 docker run -p 5000:5000 cherry-syte
 ```
 
-## App Functionality
-To get the server IP running the service and echo string back
-```
-curl http://localhost:5000?my_string=MY_STRING
-Or
-```
-To get `index.html` from `html` directory:
-```
-curl http://<SERVER_IP>:5000/html/index.html
-```
-NOTE: any file added to html directory can be accessed using the filename like so:
-```
-curl http://<SERVER_IP>:5000/html/my-file.html
-```
-
 ## Deploy Kubernetes cluster
-`NOTE: This will create a VPC that includes subnets and and the cluster`
+**`NOTE: This will create a VPC that includes subnets and EKS cluster`**
 
 ### Install pre-requisites
 ```
 brew install awscli kubernetes-cli aws-iam-authenticator wget
 ```
-### Run Terraform code
-`NOTE: AWS credentials must be exist locally with permissions to create VPC, EC2 and EKS resources`
+### Run Terraform
+**`NOTE: AWS credentials must exist locally with permissions to create VPC, EC2 and EKS AWS resources`**
 ```
 cd terraform
 terraform init -upgrade
@@ -53,18 +38,34 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-b
 kubectl proxy
 ```
 
-## Accessing the Dashboard
+## Accessing k8s Dashboard
 In seperate terminal run
 ```
 kubectl apply -f https://raw.githubusercontent.com/hashicorp/learn-terraform-provision-eks-cluster/master/kubernetes-dashboard-admin.rbac.yaml
 kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep service-controller-token | awk '{print $1}')
 ```
-Now copy and past token from last step into the UI, UI can be accessed at [this link](http://127.0.0.1:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/)
+Now copy and past token from last step into the Dashboard UI  
+UI can then be accessed at [this link](http://127.0.0.1:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/)
 
-## Deploy app to Kubernetes
+## Deploy App to Kubernetes
 ```
 cd <REPOSITORY_ROOT>
 kubectl apply -f k8s
 kubectl port-forward service/app 5000
 ```
 Then you can access the application on `localhost:5000`
+
+## App Functionality
+To get the server IP running the service and echo string back
+```
+curl http://localhost:5000?my_string=MY_STRING
+Or
+```
+To get `index.html` from `html` directory:
+```
+curl http://<SERVER_IP>:5000/html/index.html
+```
+NOTE: any file added to html directory can be accessed using the filename like so:
+```
+curl http://<SERVER_IP>:5000/html/my-file.html
+```
