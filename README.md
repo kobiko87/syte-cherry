@@ -1,5 +1,5 @@
 # Cherry Syte
-Sweet little exercise in bundling up Docker based apps 🍒🍒.
+Sweet little exercise in bundling up Docker based apps to run on K8s 🍒🍒.
 
 ## Building the App image
 ```
@@ -12,12 +12,12 @@ docker build -t cherry-syte .
 docker run -p 5000:5000 cherry-syte
 ```
 
-## Deploy Kubernetes cluster
+## Deploy Kubernetes cluster in AWS
 **`NOTE: This will create a VPC that includes subnets and EKS cluster`**
 
-### Install pre-requisites
+### Install pre-requisites to run following commands - Mac
 ```
-brew install awscli kubernetes-cli aws-iam-authenticator wget
+brew install terraform awscli wget kubernetes-cli aws-iam-authenticator
 ```
 ### Run Terraform
 **`NOTE: AWS credentials must exist locally with permissions to create VPC, EC2 and EKS AWS resources`**
