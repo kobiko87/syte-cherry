@@ -18,7 +18,7 @@ spec:
           - name: Custom-Header
             value: Health Probe
         initialDelaySeconds: 3
-        periodSeconds: 4
+        periodSeconds: 5
       resources:
           requests:
             memory: "64Mi"
